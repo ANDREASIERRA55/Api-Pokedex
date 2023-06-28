@@ -31,19 +31,29 @@ const getPokemon = async (id) => {
 };
 
 const createPokemonCard = (pokemon) => {
-	const pokemonElement = document.createElement('div');
-	pokemonElement.classList.add('pokemon');
-	const { id, name, types } = pokemon;
-	const type = types[0].type.name;
-	const color = colors[type];
-	pokemonElement.style.backgroundColor = color;
-	const imageSrc = pokemon.sprites.other['official-artwork'].front_default;
-	const pokemonInnerHTML = 
-	`<div class="img-container">
-		<img src="${imageSrc}" alt="${name}"/></div>
-		<div class="info">
-      	<span class="number">#${id.toString().padStart(3, '0')}</span>
-     	<h3 class="name">${name}</h3>
-     	<small class="type">Type: <span>${type}</span></small>
-    </div> `};
+  const pokemonElement = document.createElement('div');
+  pokemonElement.classList.add('pokemon');
+  const { id, name, types } = pokemon;
+  const type = types[0].type.name;
+  const color = colors[type];
   
+  pokemonElement.style.backgroundColor = color;
+
+  const imageSrc = pokemon.sprites.other['official-artwork'].front_default;
+ 
+  const pokemonInnerHTML = `
+    <div class="img-container">
+      <img src="${imageSrc}" alt="${name}"/>
+    </div>
+    <div class="info">
+      <span class="number">#${id.toString().padStart(3, '0')}</span>
+      <h3 class="name">${name}</h3>
+      <small class="type">Type: <span>${type}</span></small>
+    </div>
+  `;
+  
+  pokemonElement.innerHTML = pokemonInnerHTML;
+  poke_container.appendChild(pokemonElement);
+};
+
+fetchPokemons();

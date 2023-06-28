@@ -65,3 +65,8 @@ h1 {
   margin: 15px 0 7px;
   letter-spacing: 1px;
 }
+
+h3 {
+  text-decoration: underline;
+  text-transform: capitalize;
+}
